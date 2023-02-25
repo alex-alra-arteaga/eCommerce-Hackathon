@@ -1,0 +1,29 @@
+{
+  "name": "ecommerce-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-alra-arteaga/eCommerce-Hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-alra-arteaga/eCommerce-Hackathon/issues"
+  },
+  "homepage": "https://github.com/alex-alra-arteaga/eCommerce-Hackathon#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "dotenv": "^16.0.3",
+    "hardhat": "^2.12.7",
+    "hardhat-gas-reporter": "^1.0.9"
+  },
+  "dependencies": {
+    "erc721l": "^0.0.10"
+  }
+}
