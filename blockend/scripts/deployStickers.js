@@ -5,13 +5,13 @@ require("dotenv").config({ path: ".env" });
 
 async function main() {
   const { log } = deployments
-  let shopverse
+  let shopverseStickers
 
   if (!developmentChains.includes(network.name)) {
-    const Shopverse = await ethers.getContractFactory("Shopverse")
-    shopverse = await Shopverse.deploy()
-    await shopverse.deployed()
-    console.log("Shpverse deployed to: ", shopverse.address)
+    const ShopverseStickers = await ethers.getContractFactory("ShopverseStickers")
+    shopverseStickers = await ShopverseStickers.deploy() // with corresponding args
+    await shopverseSkins.deployed()
+    console.log("shopverseStickers deployed to: ", shopverseStickers.address)
   } else {
 
   }
@@ -19,7 +19,7 @@ async function main() {
   if(!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     await sleep(50000);
     log("Verifying...")
-    await verify(shopverse.address)
+    await verify(shopverseStickers.address)
   }
   log("-------------------------------------------------")
 }

@@ -1,12 +1,9 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
-
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
 
 import "erc721l/contracts/ERC721Linkable.sol";
 
-contract E7L is ERC721Linkable {
+contract ShopverseStickers is ERC721Linkable {
   constructor(
     string memory _name,
     string memory _symbol,
@@ -16,6 +13,5 @@ contract E7L is ERC721Linkable {
   function mint(uint256 tokenId) public {
     _safeMint(msg.sender, tokenId);
   }
-
-
+  
 }
