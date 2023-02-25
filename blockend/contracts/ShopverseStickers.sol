@@ -4,6 +4,8 @@ pragma solidity ^0.8.9;
 import "erc721l/contracts/ERC721Linkable.sol";
 
 contract ShopverseStickers is ERC721Linkable {
+  string public _baseTokenURI;
+
   constructor(
     string memory _name,
     string memory _symbol,

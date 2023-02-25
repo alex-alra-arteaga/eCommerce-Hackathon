@@ -10,7 +10,7 @@ async function main() {
   if (!developmentChains.includes(network.name)) {
     const ShopverseStickers = await ethers.getContractFactory("ShopverseStickers")
     shopverseStickers = await ShopverseStickers.deploy() // with corresponding args
-    await shopverseSkins.deployed()
+    await shopverseStickers.deployed()
     console.log("shopverseStickers deployed to: ", shopverseStickers.address)
   } else {
 
