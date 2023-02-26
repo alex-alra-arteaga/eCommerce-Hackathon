@@ -10,7 +10,7 @@ const BigNumber = require("bignumber.js");
 describe ("ShopverseSkins unit testing", function() {
     async function deployShopverseFixture() {
         const ShopverseSkins = await ethers.getContractFactory("ShopverseSkins");
-        const shopverseSkins = await ShopverseSkins.deploy("ipfs://QmWFeCXNLbAjywdauRw9dAg4rNysdKEANbXK2g5j8jh34i/", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+        const shopverseSkins = await ShopverseSkins.deploy("ipfs://QmWFeCXNLbAjywdauRw9dAg4rNysdKEANbXK2g5j8jh34i/", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], [100000000000000000, 200000000000000000, 300000000000000000, 400000000000000000, 500000000000000000, 600000000000000000, 700000000000000000, 800000000000000000, 900000000000000000, 100000000000000000, 100000000000000000, 100000000000000000]);
         await shopverseSkins.deployed();
         return { shopverseSkins };
     }
