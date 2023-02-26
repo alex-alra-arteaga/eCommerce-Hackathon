@@ -6,17 +6,21 @@ import "erc721l/contracts/ERC721Linkable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-error ShopverseStickers__Incorrect_Ether_Sent();
-error ShopverseStickers__TransferFailed();
+error Incorrect_Ether_Sent();
+error TransferFailed();
+error Not_TokenOwner();
 
 contract ShopverseStickers is ERC721Linkable, Ownable {
   using Counters for Counters.Counter;
+  using Strings for uint256;
 
   Counters.Counter public tokenIdCounter;
 
   string public baseTokenURI;
   
-  uint public price = 0.01 ether;
+  mapping (uint => uint) public price;
+
+  mapping (uint => bool) public isForSale;
 
   constructor(
     string memory _baseTokenURI,
@@ -32,24 +36,45 @@ contract ShopverseStickers is ERC721Linkable, Ownable {
     }
   }
 
-  function mint(uint256 tokenId) public payable {
-    if (msg.value < price) {
-      revert ShopverseStickers__Incorrect_Ether_Sent();
-    }
-    tokenIdCounter.increment();
-    _safeMint(msg.sender, tokenId);
+  function setPrice(uint256 tokenId, uint256 _price) public {
+    if (ownerOf(tokenId) != _msgSender())
+      revert Not_TokenOwner();
+    price[tokenId] = _price;
   }
-  
-  function withdraw() public onlyOwner {
+
+  function setIsForSale(uint256 tokenId, bool _isForSale) public {
+    if (ownerOf(tokenId) != _msgSender())
+      revert Not_TokenOwner();
+    isForSale[tokenId] = _isForSale;
+  }
+
+  function buyToken(uint256 tokenId) public payable {
+    require(ownerOf(tokenId) != _msgSender() && isForSale[tokenId]);
+    if (price[tokenId] > msg.value)
+      revert Incorrect_Ether_Sent();
+    (bool success, ) = payable(ownerOf(tokenId)).call{value: msg.value}("");
+    if (!success)
+      revert TransferFailed();
+    _transfer(ownerOf(tokenId), _msgSender(), tokenId);
+    isForSale[tokenId] = false;
+  }
+
+  function withdrawAll() public onlyOwner {
     uint256 amount = address(this).balance;
-      (bool success, ) = payable(msg.sender).call{value: amount}("");
-      if (!success) {
-          revert ShopverseStickers__TransferFailed();
-      }
+    (bool success, ) = payable(msg.sender).call{value: amount}("");
+    if (!success)
+      revert TransferFailed();
   }
 
   function _baseURI() internal view override returns (string memory) {
     return baseTokenURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override returns (string memory) {
+    _requireMinted(tokenId);
+
+    string memory baseURI = _baseURI();
+    return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
   }
 
   receive() external payable {}
