@@ -6,10 +6,13 @@ require("dotenv").config({ path: ".env" });
 async function main() {
   const { log } = deployments
   let shopverseSkins
-
+  const BaseUri = "ipfs://QmWFeCXNLbAjywdauRw9dAg4rNysdKEANbXK2g5j8jh34i/"
+  // could be a problem, it works like this?
+  let InstaMintTokenIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   if (!developmentChains.includes(network.name)) {
     const ShopverseSkins = await ethers.getContractFactory("ShopverseSkins")
-    shopverseSkins = await Shopverse.deploy() // with corresponding args
+    // args BASE URI, token Ids max
+    shopverseSkins = await Shopverse.deploy(BaseUri, InstaMintTokenIds)
     await shopverseSkins.deployed()
     console.log("ShopverseSkins deployed to: ", shopverseSkins.address)
   } else {
