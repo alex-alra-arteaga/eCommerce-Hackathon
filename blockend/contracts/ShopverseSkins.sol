@@ -52,7 +52,6 @@ contract ShopverseSkins is ERC721Enumerable, Ownable {
         for (uint256 i = 0; i < _tokenIds.length; i++) {
         priceIds += 1;
         tokenIdToPrice[priceIds] = _prices[i];
-        //_safeMint(msg.sender, _tokenIds[i]);
         }
     }
 
