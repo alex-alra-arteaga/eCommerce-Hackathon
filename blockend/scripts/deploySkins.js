@@ -12,7 +12,7 @@ async function main() {
   if (!developmentChains.includes(network.name)) {
     const ShopverseSkins = await ethers.getContractFactory("ShopverseSkins")
     // args BASE URI, token Ids max
-    shopverseSkins = await Shopverse.deploy(BaseUri, InstaMintTokenIds)
+    shopverseSkins = await ShopverseSkins.deploy(BaseUri, InstaMintTokenIds)
     await shopverseSkins.deployed()
     console.log("ShopverseSkins deployed to: ", shopverseSkins.address)
   } else {
