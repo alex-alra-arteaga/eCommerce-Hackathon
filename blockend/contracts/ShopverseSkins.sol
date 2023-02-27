@@ -17,13 +17,13 @@ contract ShopverseSkins is ERC721Enumerable, Ownable {
         The base tokenURI we will set the boilerpalte url that will have each token to save gas and not copy every time
     */
 
-    string _baseTokenURI;
+    string public _baseTokenURI = "QmWFeCXNLbAjywdauRw9dAg4rNysdKEANbXK2g5j8jh34i/";
+    
 
     /*
         @dev the price is to be defined, just put 0,2 ehters
         payable for special skins more price, so diferent price and diferetns mint functions
     */
-    uint public mintPrice = 0.05 ether;
 
     bool isLocked = false;
 
@@ -45,8 +45,7 @@ contract ShopverseSkins is ERC721Enumerable, Ownable {
         _tokenIds not grather than 
     */
 
-    constructor (string memory baseURI, uint256[] memory _tokenIds, uint256[] memory _prices) ERC721("ShopverseSkins", "SVS") {
-        _baseTokenURI = baseURI;
+    constructor (uint256[] memory _tokenIds, uint256[] memory _prices) ERC721("ShopverseSkins", "SVS") {
         require(_tokenIds.length <= maxTokenIds, "_tokenIds exeed the maxToken suply");
         // Batch miniting
         for (uint256 i = 0; i < _tokenIds.length; i++) {
@@ -55,18 +54,15 @@ contract ShopverseSkins is ERC721Enumerable, Ownable {
         }
     }
 
-
-    function mint() public payable {
-        if (msg.value < tokenIdToPrice[tokenIds]) {
+    function mint(uint256 _tokenId) public payable {
+        if (msg.value < tokenIdToPrice[_tokenId]) {
             revert Incorrect_Ether_Sent();
         }
-        if (tokenIds == maxTokenIds) {
+        if (tokenIds >= maxTokenIds) {
             revert Exeed__Max__Supply();
         }
         tokenIds += 1;
-        _safeMint(msg.sender, tokenIds);
-        // by defalut when minting price set to minitng Price
-        tokenIdToPrice[tokenIds] = mintPrice;
+        _safeMint(msg.sender, _tokenId);
     }
 
     /*
@@ -84,7 +80,7 @@ contract ShopverseSkins is ERC721Enumerable, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns(string memory) {
         string memory baseURI = _baseURI();
         // token id should not be that should be name
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
+        return string(abi.encodePacked(baseURI, tokenId.toString(), ".json"));
     }
 
     /* 

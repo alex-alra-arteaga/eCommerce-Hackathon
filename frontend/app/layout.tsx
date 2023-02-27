@@ -15,7 +15,7 @@ export default function RootLayout(
   const { chains, provider } = configureChains(
     [goerli],
     [
-      alchemyProvider({ apiKey: "_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC" }),
+      alchemyProvider({ apiKey: "n47skukukkxpwhFSGnTCMWNkzkRLQdR1" }),
       publicProvider(),
     ],
   );

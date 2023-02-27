@@ -9,7 +9,7 @@ async function main() {
 
   if (!developmentChains.includes(network.name)) {
     const ShopverseStickers = await ethers.getContractFactory("ShopverseStickers")
-    shopverseStickers = await ShopverseStickers.deploy() // with corresponding args
+    shopverseStickers = await ShopverseStickers.deploy("CounterVerseStickers", "CST", "0xbCd8FCF26b0da61C1A66F9E165Aa569a614DE1F2")
     await shopverseStickers.deployed()
     console.log("shopverseStickers deployed to: ", shopverseStickers.address)
   } else {

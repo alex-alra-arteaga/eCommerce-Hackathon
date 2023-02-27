@@ -6,14 +6,13 @@ require("dotenv").config({ path: ".env" });
 async function main() {
   const { log } = deployments
   let shopverseSkins
-  const BaseUri = "ipfs://QmWFeCXNLbAjywdauRw9dAg4rNysdKEANbXK2g5j8jh34i/"
   // could be a problem, it works like this?
   const InstaMintTokenIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  const PriceTokens =  [11029952448649444000000000000000000, 6131245439886204000000000000000000, 4904996351908963000000000000000000, 5518154729058603000000000000000000, 9810052851659739000000000000000000, 12262566064574674000000000000000000, 9196022413771962000000000000000000, 3678408965508785000000000000000000, 34331817011415326000000000000000000, 61306816091813085000000000000000000, 2145528106418194000000000000000000, 9195120456077975000000000000000000]
+  const PriceTokens = [ethers.utils.parseEther("0.050470700834920806"), ethers.utils.parseEther("1.2309927032907513"), ethers.utils.parseEther("5.416367894479306"), ethers.utils.parseEther("6.154963516453757"), ethers.utils.parseEther("5.53946716480838"), ethers.utils.parseEther("1.846489054936127"), ethers.utils.parseEther("0.09232445274680635"), ethers.utils.parseEther("0.03692978109872254"), ethers.utils.parseEther("3.0774817582268783"), ethers.utils.parseEther("0.07385956219744508"), ethers.utils.parseEther("0.021542372307588147"), ethers.utils.parseEther("0.10463437977971386")]
   if (!developmentChains.includes(network.name)) {
     const ShopverseSkins = await ethers.getContractFactory("ShopverseSkins")
     // args BASE URI, token Ids max
-    shopverseSkins = await ShopverseSkins.deploy(BaseUri, InstaMintTokenIds, PriceTokens)
+    shopverseSkins = await ShopverseSkins.deploy(InstaMintTokenIds, PriceTokens)
     await shopverseSkins.deployed()
     console.log("ShopverseSkins deployed to: ", shopverseSkins.address)
   } else {

@@ -1,6 +1,10 @@
 import "../../styles/globals.css";
 import Card from "../../components/Card";
 import { useSearchParams } from "next/navigation";
+import { useSigner } from "wagmi"
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
+
 
 const rarities = [
   { weigh: "common", color: "stone" },
@@ -59,7 +63,10 @@ const skins = Array.from(
 );
 
 export default function Gallery() {
+  let isStickers = true;
   const params = useSearchParams();
+  const { data: signer, isLoading } = useSigner()
+
   return (
     <div className="flex items-center justify-center mb-5">
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -68,13 +75,20 @@ export default function Gallery() {
           i,
         ) => (
           <div key={i} className="p-4">
-            <Card
-              imageURL={path}
-              alt={key}
-              title={key}
-              description={description}
-              color={rarity.color}
-            />
+            {isLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <Card
+                imageURL={path}
+                alt={key}
+                title={key}
+                description={description}
+                color={rarity.color}
+                tokenID={i + 1}
+                signer={signer}
+                isSticker={params.get("type") === "stickers"}
+              />
+            )}
           </div>
         ))}
       </div>

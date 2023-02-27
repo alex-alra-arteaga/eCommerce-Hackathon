@@ -16,8 +16,8 @@ contract ShopverseStickers is ERC721Linkable, Ownable {
   using Strings for uint256;
 
   Counters.Counter public tokenIdCounter;
-
-  string private constant baseTokenURI = "";
+  // centralized storage, not decentralized, but it's ok for this project
+  string private constant baseTokenURI = "https://gateway.pinata.cloud/ipfs/QmaKnVv2uTpaFZD1NbNpCbyMUKmCZLRZFRJR4vgKnweTg9/";
 
   uint public currentPrice =  0.5 ether + 0.04 ether * tokenIdCounter.current();
   
@@ -32,10 +32,10 @@ contract ShopverseStickers is ERC721Linkable, Ownable {
       revert Maximum_Minted();
     if (_exists(tokenID))
       revert Already_Minted();
-    if (msg.value >= currentPrice)
+    if (msg.value < currentPrice)
       revert Incorrect_Ether_Sent();
 
-    payable(owner()).transfer(msg.value - currentPrice);
+    payable(owner()).transfer(msg.value);
     tokenIdCounter.increment();
     _safeMint(msg.sender, tokenID);
   }
@@ -47,8 +47,7 @@ contract ShopverseStickers is ERC721Linkable, Ownable {
       revert TransferFailed();
   }
 
-  function tokenURI(uint256 tokenId) public view override returns (string memory) {
-    _requireMinted(tokenId);
+  function tokenURI(uint256 tokenId) public pure override returns (string memory) {
     return string(abi.encodePacked(baseTokenURI, tokenId.toString(), ".json"));
   }
 
