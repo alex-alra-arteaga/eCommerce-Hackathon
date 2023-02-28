@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
-import {mintNFT} from "../utils/mintNFT";
-import {getMetadata} from "../utils/getMetadata";
-import {getTitle} from "../utils/getTitle";
-import {getPrice} from "../utils/getPrice";
-import { Contract, ethers, providers, Wallet } from "ethers"
-import { useSigner } from "wagmi"
-import { SHOPVERSE_SKINS_ADDRESS, SHOPVERSE_STICKERS_ADDRESS, SHOPVERSE_SKINS_ABI, SHOPVERSE_STICKERS_ABI } from "../constants/index"
-
+import { useEffect, useState } from "react";
+import { mintNFT } from "../utils/mintNFT";
+import { getMetadata } from "../utils/getMetadata";
+import { getTitle } from "../utils/getTitle";
+import { getPrice } from "../utils/getPrice";
+import { Contract, ethers } from "ethers";
+import {
+  SHOPVERSE_SKINS_ABI,
+  SHOPVERSE_SKINS_ADDRESS,
+  SHOPVERSE_STICKERS_ABI,
+  SHOPVERSE_STICKERS_ADDRESS,
+} from "../constants/index";
+import { useSearchParams } from "next/navigation";
 
 type CardProps = {
   imageURL: string;
@@ -26,8 +30,11 @@ type Metadata = {
 };
 
 export default function Cart(
-  { imageURL, alt, title, description, color, tokenID, signer, isSticker }: CardProps,
+  { imageURL, alt, title, description, color, tokenID, signer, isSticker }:
+    CardProps,
 ) {
+  const params = useSearchParams();
+  const [isSkin, setIsSkin] = useState(params.get("type") === "stickers");
   const [stickersContract, setStickersContract] = useState<any>(null);
   const [skinsContract, setSkinsContract] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -36,60 +43,71 @@ export default function Cart(
   const [NFTDescription, setNFTDescription] = useState("");
   const [NFTPrice, setNFTPrice] = useState("");
 
-  useEffect(() => {
-    setSkinsContract(
-      new Contract(
-        SHOPVERSE_SKINS_ADDRESS,
-        SHOPVERSE_SKINS_ABI,
-        signer,
-      )
+  // (skinsContract, stickersContract, isSkinsContract, tokenID)
+  // boolean isSkinsContract how to know if it's a skin or a sticker
+  const fetchMetadata = async (...params: Parameters<typeof getMetadata>) => {
+    const data: Metadata = await getMetadata.apply(null, params);
+    const image = data.image.slice(7);
+    setNFTImage(image);
+    setNFTTitle(data.name);
+    setNFTDescription(data.description);
+  };
+
+  const GetSkinPrice = async () => {
+    const price = await getPrice(
+      skinsContract,
+      stickersContract,
+      isSticker,
+      tokenID,
     );
-    setStickersContract(
-      new Contract(
-        SHOPVERSE_STICKERS_ADDRESS,
-        SHOPVERSE_STICKERS_ABI,
-        signer,
-      )
-    )
+    setNFTPrice(ethers.utils.formatEther(price));
+  };
+
+  useEffect(() => {
+    const auxSkinCont = new Contract(
+      SHOPVERSE_SKINS_ADDRESS,
+      SHOPVERSE_SKINS_ABI,
+      signer,
+    );
+    const auxStickerCont = new Contract(
+      SHOPVERSE_STICKERS_ADDRESS,
+      SHOPVERSE_STICKERS_ABI,
+      signer,
+    );
+    setSkinsContract(auxSkinCont);
+    setStickersContract(auxStickerCont);
   }, []);
 
   useEffect(() => {
-    (async () => {
-      await fetchMetadata()
-      await GetSkinPrice()
-    })()
-  }, [skinsContract, stickersContract])
+    if (!skinsContract || !stickersContract) return;
+    fetchMetadata(
+      skinsContract,
+      stickersContract,
+      !isSticker,
+      tokenID,
+    ), GetSkinPrice();
+  }, [isSkin]);
+
+  useEffect(() => {
+    if (!skinsContract || !stickersContract) return;
+    fetchMetadata(
+      skinsContract,
+      stickersContract,
+      !isSticker,
+      tokenID,
+    ), GetSkinPrice();
+  }, [skinsContract, stickersContract]);
 
   const triggerMintNFT = async () => {
     try {
-      setLoading(true)
-      await mintNFT(skinsContract, stickersContract, isSticker, tokenID)
-      setLoading(false)
+      setLoading(true);
+      await mintNFT(skinsContract, stickersContract, isSticker, tokenID);
+      setLoading(false);
     } catch (err) {
-      console.log(err)
-      setLoading(false)
+      console.log(err);
+      setLoading(false);
     }
-  
-  }
-  // (skinsContract, stickersContract, isSkinsContract, tokenID)
-  // boolean isSkinsContract how to know if it's a skin or a sticker
-  const fetchMetadata = async () => {
-    const data: Metadata = await getMetadata(skinsContract, stickersContract, isSticker, tokenID);
-    console.log(data.image)
-    const image = data.image.slice(7);
-    setNFTImage(image)
-    setNFTTitle(data.name);
-    setNFTDescription(data.description);
-    console.log("img: ", data.image)
-    console.log("title: ", data.name)
-    console.log("description: ", data.description)
-  }
-
-  const GetSkinPrice = async () => { 
-    const price = await getPrice(skinsContract, stickersContract, isSticker, tokenID)
-    setNFTPrice(ethers.utils.formatEther(price))
-    console.log("price: ", price)
-  }
+  };
 
   return (
     <div
@@ -97,17 +115,27 @@ export default function Cart(
     >
       <figure>
         <img
+          id={NFTImage}
           src={"https://ipfs.io/ipfs/" + NFTImage}
+          onError={({ currentTarget }) => {
+            currentTarget.src =
+              "https://ipfs.io/ipfs/Qmez9BJ9Tzk3nqBghq4osyiBznJHWJmdJzCE6qwqaAWGtm/9.png";
+          }}
           alt={alt}
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{NFTTitle}</h2>
-        <p className="py-5">{NFTDescription}</p>
+        <p className="py-5">{NFTDescription} - <code>{NFTPrice}</code> ETH</p>
         <div className="card-actions justify-end">
           <button className="btn btn-secondary btn-outline">Add to cart</button>
-          <button className="btn btn-primary" disabled={loading} onClick={triggerMintNFT}>Buy Now</button>
-          <p> {NFTPrice}</p>
+          <button
+            className="btn btn-primary"
+            disabled={loading}
+            onClick={triggerMintNFT}
+          >
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

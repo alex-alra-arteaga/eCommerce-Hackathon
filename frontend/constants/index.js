@@ -1,32 +1,34 @@
-export const SHOPVERSE_SKINS_ADDRESS = "0xbCd8FCF26b0da61C1A66F9E165Aa569a614DE1F2"
-export const SHOPVERSE_STICKERS_ADDRESS = "0x27f1B6A8b7347567b6e657ebD3E38d814F46c657"
-export const API_URL = "the graph"
-export const SHOPVERSE_SKINS_ABI =  [
+export const SHOPVERSE_SKINS_ADDRESS =
+  "0xbCd8FCF26b0da61C1A66F9E165Aa569a614DE1F2";
+export const SHOPVERSE_STICKERS_ADDRESS =
+  "0x27f1B6A8b7347567b6e657ebD3E38d814F46c657";
+export const API_URL = "the graph";
+export const SHOPVERSE_SKINS_ABI = [
   {
     "inputs": [
       {
         "internalType": "uint256[]",
         "name": "_tokenIds",
-        "type": "uint256[]"
+        "type": "uint256[]",
       },
       {
         "internalType": "uint256[]",
         "name": "_prices",
-        "type": "uint256[]"
-      }
+        "type": "uint256[]",
+      },
     ],
     "stateMutability": "nonpayable",
-    "type": "constructor"
+    "type": "constructor",
   },
   {
     "inputs": [],
     "name": "Exeed__Max__Supply",
-    "type": "error"
+    "type": "error",
   },
   {
     "inputs": [],
     "name": "Incorrect_Ether_Sent",
-    "type": "error"
+    "type": "error",
   },
   {
     "anonymous": false,
@@ -35,23 +37,23 @@ export const SHOPVERSE_SKINS_ABI =  [
         "indexed": true,
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "approved",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "Approval",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -60,23 +62,23 @@ export const SHOPVERSE_SKINS_ABI =  [
         "indexed": true,
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "operator",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": false,
         "internalType": "bool",
         "name": "approved",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "name": "ApprovalForAll",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -85,17 +87,17 @@ export const SHOPVERSE_SKINS_ABI =  [
         "indexed": true,
         "internalType": "address",
         "name": "previousOwner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "newOwner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -104,27 +106,27 @@ export const SHOPVERSE_SKINS_ABI =  [
         "indexed": true,
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "Transfer",
-    "type": "event"
+    "type": "event",
   },
   {
     "stateMutability": "payable",
-    "type": "fallback"
+    "type": "fallback",
   },
   {
     "inputs": [],
@@ -133,110 +135,110 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "approve",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "owner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "balanceOf",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "getApproved",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "_tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "getPrice",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "operator",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "isApprovedForAll",
     "outputs": [
       {
         "internalType": "bool",
         "name": "",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -245,24 +247,24 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "_tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "mint",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -271,11 +273,11 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -284,30 +286,30 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "ownerOf",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -316,106 +318,106 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
     "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "safeTransferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
+        "type": "uint256",
       },
       {
         "internalType": "bytes",
         "name": "data",
-        "type": "bytes"
-      }
+        "type": "bytes",
+      },
     ],
     "name": "safeTransferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "operator",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "bool",
         "name": "approved",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "name": "setApprovalForAll",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "bytes4",
         "name": "interfaceId",
-        "type": "bytes4"
-      }
+        "type": "bytes4",
+      },
     ],
     "name": "supportsInterface",
     "outputs": [
       {
         "internalType": "bool",
         "name": "",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -424,49 +426,49 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "index",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenByIndex",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenIdToPrice",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -475,54 +477,54 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "index",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenOfOwnerByIndex",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenURI",
     "outputs": [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -531,101 +533,101 @@ export const SHOPVERSE_SKINS_ABI =  [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "transferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "newOwner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
     "name": "withdraw",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "stateMutability": "payable",
-    "type": "receive"
-  }
-]
+    "type": "receive",
+  },
+];
 export const SHOPVERSE_STICKERS_ABI = [
   {
     "inputs": [
       {
         "internalType": "string",
         "name": "_name",
-        "type": "string"
+        "type": "string",
       },
       {
         "internalType": "string",
         "name": "_symbol",
-        "type": "string"
+        "type": "string",
       },
       {
         "internalType": "address",
         "name": "_parentContract",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "nonpayable",
-    "type": "constructor"
+    "type": "constructor",
   },
   {
     "inputs": [],
     "name": "Already_Minted",
-    "type": "error"
+    "type": "error",
   },
   {
     "inputs": [],
     "name": "Incorrect_Ether_Sent",
-    "type": "error"
+    "type": "error",
   },
   {
     "inputs": [],
     "name": "Maximum_Minted",
-    "type": "error"
+    "type": "error",
   },
   {
     "inputs": [],
     "name": "TransferFailed",
-    "type": "error"
+    "type": "error",
   },
   {
     "anonymous": false,
@@ -634,23 +636,23 @@ export const SHOPVERSE_STICKERS_ABI = [
         "indexed": true,
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "approved",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "Approval",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -659,23 +661,23 @@ export const SHOPVERSE_STICKERS_ABI = [
         "indexed": true,
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "operator",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": false,
         "internalType": "bool",
         "name": "approved",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "name": "ApprovalForAll",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -684,17 +686,17 @@ export const SHOPVERSE_STICKERS_ABI = [
         "indexed": false,
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
+        "type": "uint256",
       },
       {
         "indexed": false,
         "internalType": "uint256",
         "name": "parentTokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "Link",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -703,17 +705,17 @@ export const SHOPVERSE_STICKERS_ABI = [
         "indexed": true,
         "internalType": "address",
         "name": "previousOwner",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "newOwner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
+    "type": "event",
   },
   {
     "anonymous": false,
@@ -722,64 +724,64 @@ export const SHOPVERSE_STICKERS_ABI = [
         "indexed": true,
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "indexed": true,
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "Transfer",
-    "type": "event"
+    "type": "event",
   },
   {
     "stateMutability": "payable",
-    "type": "fallback"
+    "type": "fallback",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "approve",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "owner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "balanceOf",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -788,85 +790,85 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "getApproved",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "owner",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "operator",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "isApprovedForAll",
     "outputs": [
       {
         "internalType": "bool",
         "name": "",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
+        "type": "uint256",
       },
       {
         "internalType": "uint256",
         "name": "parentTokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "linkToken",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenID",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "mint",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -875,11 +877,11 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -888,30 +890,30 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "ownerOf",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -920,106 +922,106 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "contract IERC721",
         "name": "",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
     "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "safeTransferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
+        "type": "uint256",
       },
       {
         "internalType": "bytes",
         "name": "data",
-        "type": "bytes"
-      }
+        "type": "bytes",
+      },
     ],
     "name": "safeTransferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "operator",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "bool",
         "name": "approved",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "name": "setApprovalForAll",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "bytes4",
         "name": "interfaceId",
-        "type": "bytes4"
-      }
+        "type": "bytes4",
+      },
     ],
     "name": "supportsInterface",
     "outputs": [
       {
         "internalType": "bool",
         "name": "",
-        "type": "bool"
-      }
+        "type": "bool",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -1028,24 +1030,24 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "syncToken",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
@@ -1054,19 +1056,19 @@ export const SHOPVERSE_STICKERS_ABI = [
       {
         "internalType": "uint256",
         "name": "_value",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenInfo",
     "outputs": [
@@ -1075,86 +1077,86 @@ export const SHOPVERSE_STICKERS_ABI = [
           {
             "internalType": "bool",
             "name": "linked",
-            "type": "bool"
+            "type": "bool",
           },
           {
             "internalType": "uint256",
             "name": "parentTokenId",
-            "type": "uint256"
-          }
+            "type": "uint256",
+          },
         ],
         "internalType": "struct LinkableToken",
         "name": "",
-        "type": "tuple"
-      }
+        "type": "tuple",
+      },
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "tokenURI",
     "outputs": [
       {
         "internalType": "string",
         "name": "",
-        "type": "string"
-      }
+        "type": "string",
+      },
     ],
     "stateMutability": "pure",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "from",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "address",
         "name": "to",
-        "type": "address"
+        "type": "address",
       },
       {
         "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint256"
-      }
+        "type": "uint256",
+      },
     ],
     "name": "transferFrom",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [
       {
         "internalType": "address",
         "name": "newOwner",
-        "type": "address"
-      }
+        "type": "address",
+      },
     ],
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "inputs": [],
     "name": "withdrawAll",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
   },
   {
     "stateMutability": "payable",
-    "type": "receive"
-  }
-]
+    "type": "receive",
+  },
+];

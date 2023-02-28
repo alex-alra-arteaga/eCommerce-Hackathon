@@ -4,22 +4,22 @@ import { useSigner } from "wagmi";
 import { Contract } from "ethers";
 
 export default function Modal() {
-  const [visible, setVisible] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [parentID, setParentID] = useState("")
-  const [linkableID, setLinkableID] = useState("")
-  const { data: signer } = useSigner()
+  const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [parentID, setParentID] = useState("");
+  const [linkableID, setLinkableID] = useState("");
+  const { data: signer } = useSigner();
 
   const triggerLinkNFT = async () => {
     try {
-      setLoading(true)
-      await linkNFT(signer, linkableID, parentID)
-      setLoading(false)
+      setLoading(true);
+      await linkNFT(signer, linkableID, parentID);
+      setLoading(false);
     } catch (err) {
-      console.log(err)
-      setLoading(false)
+      console.log(err);
+      setLoading(false);
     }
-  }
+  };
   return (
     <>
       <label
@@ -63,7 +63,9 @@ export default function Modal() {
                               id="first"
                               type="text"
                               placeholder="Parent Token ID"
-                              onChange={(e) => {setParentID(e.target.value)}}
+                              onChange={(e) => {
+                                setParentID(e.target.value);
+                              }}
                             />
                           </div>
                         </div>
@@ -81,7 +83,9 @@ export default function Modal() {
                               id="first"
                               type="text"
                               placeholder="Linkable Token ID"
-                              onChange={(e) => {setLinkableID(e.target.value)}}
+                              onChange={(e) => {
+                                setLinkableID(e.target.value);
+                              }}
                             />
                           </div>
                         </div>

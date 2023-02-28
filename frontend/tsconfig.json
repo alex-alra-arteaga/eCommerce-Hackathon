@@ -28,8 +28,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "utils/mintNFT.js", "components/Card.tsx"  ],
+    ".next/types/**/*.ts",
+    "utils/mintNFT.js",
+    "components/Card.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
